@@ -1,0 +1,75 @@
+Deep Learning Individual Project — Assignment Specification (Plain Text)
+
+1) Overview
+You are provided with a custom dataset containing 16,000 samples from 4 classes. 
+Your task is to design, train, justify, and submit a deep learning classifier using Keras / TensorFlow.
+This is an individual project. You must submit both code and a trained model.
+You will be assessed on correctness, reasoning, experimentation quality, clarity, and reproducibility.
+
+Due date: 11:59 PM, Saturday, December 6, 2025
+
+2) Files You Will Receive
+  - 4class_32x32.npz
+    X: (16000, 32, 32) float32
+    y: (16000,) int64, labels in {0,1,2,3}
+  - There is no predefined train/validation split. You must create your own split(s).
+
+3) What You Must Submit
+  - submission_studentId.ipynb  (e.g., submission_s3938294.ipynb)
+  - model_studentId.h5          (e.g., model_s3938294.h5)
+  The notebook must support BOTH options:
+    A) Load Model — loads model_studentId.h5 and evaluates
+    B) Train Model — full training pipeline from scratch
+
+  Both options must result in the same callable:
+    def predict_fn(X32x32: np.ndarray) -> np.ndarray
+  which returns an (N,) int64 array with labels in {0,1,2,3} for inputs of shape (N,32,32).
+
+4) Notebook Requirements
+  Your notebook must include and clearly separate the following sections:
+    - Introduction (markdown): objective and overview
+    - Dataset inspection (markdown + code): value ranges, comments
+    - Train/validation split and preprocessing choices (markdown): justification
+    - Architecture reasoning (markdown): justify model type and layer sizes
+    - Techniques and theory (markdown): activation, loss, optimizer, regularization
+    - Experiments (markdown + code): variations tried, learning curves, ablations
+    - Option A: Load trained model (keras.models.load_model)
+    - Option B: Train from scratch (reproducible code); save with model.save("model_studentId.h5")
+    - predict_fn(X32x32) definition (mandatory; works after either path)
+    - Dev-set evaluation and discussion
+    - Reflection: weaknesses, improvements, insights
+
+5) Allowed Libraries and Environment Rules
+  - Framework: Keras / TensorFlow only (no PyTorch/JAX/etc.).
+  - Allowed libraries: numpy, matplotlib, pandas, scikit-learn, seaborn, and similar standard scientific Python packages.
+  - Internet is allowed. The notebook must run without the instructor manually installing packages.
+    Lightweight `pip install` inside the notebook is permitted if necessary and clearly stated.
+  - Pretrained models are allowed if you:
+      (1) clearly cite the source (e.g., keras.applications.*),
+      (2) explain why the choice is appropriate,
+      (3) ensure your notebook still runs without manual setup.
+  - Do not download any external datasets during execution.
+
+6) Academic Honesty Statement (include at the top of your notebook)
+  "I declare that this submission is my own work, and that I did not use any pretrained model or code that I did not explicitly cite."
+
+7) Grading Notes
+  - Overall structure, code quality & reproducibility: 10%
+  - Depth of reasoning / theoretical justification: 10%
+  - Correctness of implementation & model accuracy: 50%
+  - Documentation: quality of experiments & supporting evidence: 30%
+
+  There is no strict accuracy threshold, but poor performance without justification will affect the mark.
+
+8) Instructor Evaluation Workflow
+  - Open submission_studentId.ipynb.
+  - Run Option A to load model_studentId.h5.
+  - Call predict_fn(X) on a hidden hold-out dataset of compatible format.
+  - Review markdown reasoning, experiments, and code clarity.
+  - If needed, run Option B to verify training integrity.
+
+9) Submission Format
+  Submit exactly two files, both including your student ID:
+    - submission_studentId.ipynb    (e.g., submission_s3938294.ipynb)
+    - model_studentId.h5            (e.g., model_s3938294.h5)
+  Do not zip unless specifically requested. Late submissions follow standard policy.
